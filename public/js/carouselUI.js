@@ -1,9 +1,9 @@
 export default class CarouselUI {
     constructor() {
         this.carouselUI = document.querySelector('.carouselUI');
-        this.imgurl1 = "http://localhost:8080/rightpannel1";
-        this.imgurl2 = "http://localhost:8080/rightpannel2";
-        this.imgurl3 = "http://localhost:8080/rightpannel3";
+        this.imgurl1 = "http://localhost:8080/public/img/rightpannel1.png";
+        this.imgurl2 = "http://localhost:8080/public/img/rightpannel2.png";
+        this.imgurl3 = "http://localhost:8080/public/img/rightpannel3.png";
     }
 
     makeImageDOM(imgurl) {
@@ -22,7 +22,7 @@ export default class CarouselUI {
                 this.makeImageDOM(this.imgurl1),
                 this.makeImageDOM(this.imgurl2),
                 this.makeImageDOM(this.imgurl3),
-                this.makeImageDOM(this.imgurl1),
+                this.makeImageDOM(this.imgurl1)
             )
     }
 }
