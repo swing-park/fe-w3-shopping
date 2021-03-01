@@ -1,28 +1,30 @@
 export default class CarouselUI {
     constructor() {
-        this.carouselUI = document.querySelector('.carouselUI');
-        this.imgurl1 = "http://localhost:8080/public/img/rightpannel1.png";
-        this.imgurl2 = "http://localhost:8080/public/img/rightpannel2.png";
-        this.imgurl3 = "http://localhost:8080/public/img/rightpannel3.png";
+        this.carousel = document.querySelector('.carouselUI');
+        this.imgurl = "http://localhost:8080/public/data/imgurl.json";
     }
 
     makeImageDOM(imgurl) {
-        this.carouselUI.insertAdjacentHTML("beforeend",
+        this.carousel.insertAdjacentHTML("beforeend",
             `<div class="carouselUI--img">
                 <img src="${imgurl}" />
             </div>`);
-    }
+    };
 
     insertDOM() {
-        fetch(this.imgurl1)
-            .then(fetch(this.imgurl2))
-            .then(fetch(this.imgurl3))
-            .then(
-                this.makeImageDOM(this.imgurl3),
-                this.makeImageDOM(this.imgurl1),
-                this.makeImageDOM(this.imgurl2),
-                this.makeImageDOM(this.imgurl3),
-                this.makeImageDOM(this.imgurl1)
-            )
+        fetch(this.imgurl)
+            .then((res) => res.json())
+            .then((data) => {
+                const rightpannel1Img = data.contents[0].rightpannel1.imgurl;
+                const rightpannel2Img = data.contents[0].rightpannel2.imgurl;
+                const rightpannel3Img = data.contents[0].rightpannel3.imgurl;
+
+                this.makeImageDOM(rightpannel3Img);
+                this.makeImageDOM(rightpannel1Img);
+                this.makeImageDOM(rightpannel2Img);
+                this.makeImageDOM(rightpannel3Img);
+                this.makeImageDOM(rightpannel1Img);
+            })
     }
 }
+
